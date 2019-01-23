@@ -1,10 +1,10 @@
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <assets/assets.h>
 
-#include <test/test_raven.h>
+#include <test/test_raptoreum.h>
 
 #include <boost/test/unit_test.hpp>
 

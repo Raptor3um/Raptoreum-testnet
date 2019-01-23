@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
 # Copyright (c) 2017 The Bitcoin Core developers
-# Copyright (c) 2017-2018 The Raven Core developers
+# Copyright (c) 2017-2018 The Raptoreum Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Testing asset reorg use cases
 
 """
-from test_framework.test_framework import RavenTestFramework
+from test_framework.test_framework import RaptoreumTestFramework
 from test_framework.util import *
 
 
 import string
 
-class AssetReorgTest(RavenTestFramework):
+class AssetReorgTest(RaptoreumTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 2
 
 
     def activate_assets(self):
-        self.log.info("Generating RVN and activating assets...")
+        self.log.info("Generating RTM and activating assets...")
         n0, n1 = self.nodes[0], self.nodes[1]
 
         n0.generate(1)
@@ -28,7 +28,6 @@ class AssetReorgTest(RavenTestFramework):
         self.sync_all()
         n1.generate(216)
         self.sync_all()
-        assert_equal("active", n0.getblockchaininfo()['bip9_softforks']['assets']['status'])
 
 
     def issue_reorg_test(self):

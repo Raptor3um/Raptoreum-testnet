@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_TRANSACTIONFILTERPROXY_H
-#define RAVEN_QT_TRANSACTIONFILTERPROXY_H
+#ifndef RAPTOREUM_QT_TRANSACTIONFILTERPROXY_H
+#define RAPTOREUM_QT_TRANSACTIONFILTERPROXY_H
 
 #include "amount.h"
 
@@ -67,4 +67,4 @@ private:
     int limitRows;
     bool showInactive;
 };
-#endif // RAVEN_QT_TRANSACTIONFILTERPROXY_H
+#endif // RAPTOREUM_QT_TRANSACTIONFILTERPROXY_H

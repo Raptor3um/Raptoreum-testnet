@@ -1,15 +1,15 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_UTILITYDIALOG_H
-#define RAVEN_QT_UTILITYDIALOG_H
+#ifndef RAPTOREUM_QT_UTILITYDIALOG_H
+#define RAPTOREUM_QT_UTILITYDIALOG_H
 
 #include <QDialog>
 #include <QObject>
 
-class RavenGUI;
+class RaptoreumGUI;
 
 namespace Ui {
     class HelpMessageDialog;
@@ -43,10 +43,10 @@ class ShutdownWindow : public QWidget
 
 public:
     explicit ShutdownWindow(QWidget *parent=0, Qt::WindowFlags f=0);
-    static QWidget *showShutdownWindow(RavenGUI *window);
+    static QWidget *showShutdownWindow(RaptoreumGUI *window);
 
 protected:
     void closeEvent(QCloseEvent *event);
 };
 
-#endif // RAVEN_QT_UTILITYDIALOG_H
+#endif // RAPTOREUM_QT_UTILITYDIALOG_H

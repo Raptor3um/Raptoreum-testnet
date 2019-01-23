@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_ASSETTABLEMODEL_H
-#define RAVEN_QT_ASSETTABLEMODEL_H
+#ifndef RAPTOREUM_QT_ASSETTABLEMODEL_H
+#define RAPTOREUM_QT_ASSETTABLEMODEL_H
 
 #include "amount.h"
 
@@ -38,7 +38,7 @@ public:
     enum RoleIndex {
         /** Net amount of transaction */
             AmountRole = 100,
-        /** RVN or name of an asset */
+        /** RTM or name of an asset */
             AssetNameRole = 101,
         /** Formatted amount, without brackets when unconfirmed */
             FormattedAmountRole = 102,
@@ -65,4 +65,4 @@ private:
     friend class AssetTablePriv;
 };
 
-#endif // RAVEN_QT_ASSETTABLEMODEL_H
+#endif // RAPTOREUM_QT_ASSETTABLEMODEL_H

@@ -1,0 +1,8 @@
+/usr/bin/raptoreum-cli		--	gen_context(system_u:object_r:raptoreum_exec_t,s0)
+/usr/sbin/raptoreumd		--	gen_context(system_u:object_r:raptoreum_exec_t,s0)
+/usr/lib(64)?/raptoreum/raptoreumd		--	gen_context(system_u:object_r:raptoreum_exec_t,s0)
+
+/etc/raptoreum(/.*)?		gen_context(system_u:object_r:raptoreum_conf_t,s0)
+/var/lib/raptoreum(/.*)?		gen_context(system_u:object_r:raptoreum_var_lib_t,s0)
+
+(/var)?/run/raptoreumd(/.*)?   gen_context(system_u:object_r:raptoreum_var_run_t,s0)

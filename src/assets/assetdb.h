@@ -1,9 +1,9 @@
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_ASSETDB_H
-#define RAVEN_ASSETDB_H
+#ifndef RAPTOREUM_ASSETDB_H
+#define RAPTOREUM_ASSETDB_H
 
 #include "fs.h"
 #include "serialize.h"
@@ -71,4 +71,4 @@ public:
 };
 
 
-#endif //RAVEN_ASSETDB_H
+#endif //RAPTOREUM_ASSETDB_H

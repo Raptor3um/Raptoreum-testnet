@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -214,13 +214,13 @@ int CBase58Data::CompareTo(const CBase58Data& b58) const
 namespace
 {
 
-class CRavenAddressVisitor : public boost::static_visitor<bool>
+class CRaptoreumAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    CRavenAddress* addr;
+    CRaptoreumAddress* addr;
 
 public:
-    explicit CRavenAddressVisitor(CRavenAddress* addrIn) : addr(addrIn) {}
+    explicit CRaptoreumAddressVisitor(CRaptoreumAddress* addrIn) : addr(addrIn) {}
 
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CScriptID& id) const { return addr->Set(id); }
@@ -229,29 +229,29 @@ public:
 
 } // namespace
 
-bool CRavenAddress::Set(const CKeyID& id)
+bool CRaptoreumAddress::Set(const CKeyID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool CRavenAddress::Set(const CScriptID& id)
+bool CRaptoreumAddress::Set(const CScriptID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
     return true;
 }
 
-bool CRavenAddress::Set(const CTxDestination& dest)
+bool CRaptoreumAddress::Set(const CTxDestination& dest)
 {
-    return boost::apply_visitor(CRavenAddressVisitor(this), dest);
+    return boost::apply_visitor(CRaptoreumAddressVisitor(this), dest);
 }
 
-bool CRavenAddress::IsValid() const
+bool CRaptoreumAddress::IsValid() const
 {
     return IsValid(Params());
 }
 
-bool CRavenAddress::IsValid(const CChainParams& params) const
+bool CRaptoreumAddress::IsValid(const CChainParams& params) const
 {
     bool fCorrectSize = vchData.size() == 20;
     bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -259,7 +259,7 @@ bool CRavenAddress::IsValid(const CChainParams& params) const
     return fCorrectSize && fKnownVersion;
 }
 
-CTxDestination CRavenAddress::Get() const
+CTxDestination CRaptoreumAddress::Get() const
 {
     if (!IsValid())
         return CNoDestination();
@@ -273,7 +273,7 @@ CTxDestination CRavenAddress::Get() const
         return CNoDestination();
 }
 
-bool CRavenAddress::GetIndexKey(uint160& hashBytes, int& type) const
+bool CRaptoreumAddress::GetIndexKey(uint160& hashBytes, int& type) const
 {
     if (!IsValid()) {
         return false;
@@ -290,7 +290,7 @@ bool CRavenAddress::GetIndexKey(uint160& hashBytes, int& type) const
     return false;
 }
 
-void CRavenSecret::SetKey(const CKey& vchSecret)
+void CRaptoreumSecret::SetKey(const CKey& vchSecret)
 {
     assert(vchSecret.IsValid());
     SetData(Params().Base58Prefix(CChainParams::SECRET_KEY), vchSecret.begin(), vchSecret.size());
@@ -298,7 +298,7 @@ void CRavenSecret::SetKey(const CKey& vchSecret)
         vchData.push_back(1);
 }
 
-CKey CRavenSecret::GetKey()
+CKey CRaptoreumSecret::GetKey()
 {
     CKey ret;
     assert(vchData.size() >= 32);
@@ -306,41 +306,41 @@ CKey CRavenSecret::GetKey()
     return ret;
 }
 
-bool CRavenSecret::IsValid() const
+bool CRaptoreumSecret::IsValid() const
 {
     bool fExpectedFormat = vchData.size() == 32 || (vchData.size() == 33 && vchData[32] == 1);
     bool fCorrectVersion = vchVersion == Params().Base58Prefix(CChainParams::SECRET_KEY);
     return fExpectedFormat && fCorrectVersion;
 }
 
-bool CRavenSecret::SetString(const char* pszSecret)
+bool CRaptoreumSecret::SetString(const char* pszSecret)
 {
     return CBase58Data::SetString(pszSecret) && IsValid();
 }
 
-bool CRavenSecret::SetString(const std::string& strSecret)
+bool CRaptoreumSecret::SetString(const std::string& strSecret)
 {
     return SetString(strSecret.c_str());
 }
 
 std::string EncodeDestination(const CTxDestination& dest)
 {
-    CRavenAddress addr(dest);
+    CRaptoreumAddress addr(dest);
     if (!addr.IsValid()) return "";
     return addr.ToString();
 }
 
 CTxDestination DecodeDestination(const std::string& str)
 {
-    return CRavenAddress(str).Get();
+    return CRaptoreumAddress(str).Get();
 }
 
 bool IsValidDestinationString(const std::string& str, const CChainParams& params)
 {
-    return CRavenAddress(str).IsValid(params);
+    return CRaptoreumAddress(str).IsValid(params);
 }
 
 bool IsValidDestinationString(const std::string& str)
 {
-    return CRavenAddress(str).IsValid();
+    return CRaptoreumAddress(str).IsValid();
 }

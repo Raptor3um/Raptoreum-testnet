@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2018 The Raven Core developers
+// Copyright (c) 2017-2018 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVENCOIN_ASSETFILTERPROXY_H
-#define RAVENCOIN_ASSETFILTERPROXY_H
+#ifndef RAPTOREUMCOIN_ASSETFILTERPROXY_H
+#define RAPTOREUMCOIN_ASSETFILTERPROXY_H
 
 #include <QSortFilterProxyModel>
 
@@ -24,4 +24,4 @@ private:
 };
 
 
-#endif //RAVENCOIN_ASSETFILTERPROXY_H
+#endif //RAPTOREUMCOIN_ASSETFILTERPROXY_H

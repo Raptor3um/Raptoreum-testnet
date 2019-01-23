@@ -1,10 +1,10 @@
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <assets/assets.h>
 
-#include <test/test_raven.h>
+#include <test/test_raptoreum.h>
 
 #include <boost/test/unit_test.hpp>
 #include "core_write.cpp"
@@ -53,20 +53,20 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         BOOST_CHECK(!IsAssetNameValid("A._BC", type));
         BOOST_CHECK(!IsAssetNameValid("AB_.C", type));
 
-        //- Versions of RAVENCOIN NOT allowed
-        BOOST_CHECK(!IsAssetNameValid("RVN", type));
-        BOOST_CHECK(!IsAssetNameValid("RAVEN", type));
-        BOOST_CHECK(!IsAssetNameValid("RAVENCOIN", type));
+        //- Versions of RAPTOREUMCOIN NOT allowed
+        BOOST_CHECK(!IsAssetNameValid("RTM", type));
+        BOOST_CHECK(!IsAssetNameValid("RAPTOREUM", type));
+        BOOST_CHECK(!IsAssetNameValid("RAPTOREUMCOIN", type));
 
-        //- Versions of RAVENCOIN ALLOWED
-        BOOST_CHECK(IsAssetNameValid("RAVEN.COIN", type));
-        BOOST_CHECK(IsAssetNameValid("RAVEN_COIN", type));
-        BOOST_CHECK(IsAssetNameValid("RVNSPYDER", type));
-        BOOST_CHECK(IsAssetNameValid("SPYDERRVN", type));
-        BOOST_CHECK(IsAssetNameValid("RAVENSPYDER", type));
-        BOOST_CHECK(IsAssetNameValid("SPYDERAVEN", type));
-        BOOST_CHECK(IsAssetNameValid("BLACK_RAVENS", type));
-        BOOST_CHECK(IsAssetNameValid("SERVNOT", type));
+        //- Versions of RAPTOREUMCOIN ALLOWED
+        BOOST_CHECK(IsAssetNameValid("RAPTOREUM.COIN", type));
+        BOOST_CHECK(IsAssetNameValid("RAPTOREUM_COIN", type));
+        BOOST_CHECK(IsAssetNameValid("RTMSPYDER", type));
+        BOOST_CHECK(IsAssetNameValid("SPYDERRTM", type));
+        BOOST_CHECK(IsAssetNameValid("RAPTOREUMSPYDER", type));
+        BOOST_CHECK(IsAssetNameValid("SPYDERAPTOREUM", type));
+        BOOST_CHECK(IsAssetNameValid("BLACK_RAPTOREUMS", type));
+        BOOST_CHECK(IsAssetNameValid("SERTMOT", type));
 
         // subs
         BOOST_CHECK(IsAssetNameValid("ABC/A", type));
@@ -183,7 +183,7 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         SelectParams(CBaseChainParams::MAIN);
 
         // Create the asset scriptPubKey
-        CAssetTransfer asset("RAVEN", 1000);
+        CAssetTransfer asset("RAPTOREUM", 1000);
         CScript scriptPubKey = GetScriptForDestination(DecodeDestination(Params().GlobalBurnAddress()));
         asset.ConstructTransaction(scriptPubKey);
 
@@ -204,7 +204,7 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         SelectParams(CBaseChainParams::MAIN);
 
         // Create the asset scriptPubKey
-        CNewAsset asset("RAVEN", 1000, 8, 1, 0, "");
+        CNewAsset asset("RAPTOREUM", 1000, 8, 1, 0, "");
         CScript scriptPubKey = GetScriptForDestination(DecodeDestination(Params().GlobalBurnAddress()));
         asset.ConstructTransaction(scriptPubKey);
 

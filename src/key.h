@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_KEY_H
-#define RAVEN_KEY_H
+#ifndef RAPTOREUM_KEY_H
+#define RAPTOREUM_KEY_H
 
 #include "pubkey.h"
 #include "serialize.h"
@@ -184,4 +184,4 @@ void ECC_Stop(void);
 /** Check that required EC support is available at runtime. */
 bool ECC_InitSanityCheck(void);
 
-#endif // RAVEN_KEY_H
+#endif // RAPTOREUM_KEY_H

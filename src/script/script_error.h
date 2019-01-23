@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_SCRIPT_SCRIPT_ERROR_H
-#define RAVEN_SCRIPT_SCRIPT_ERROR_H
+#ifndef RAPTOREUM_SCRIPT_SCRIPT_ERROR_H
+#define RAPTOREUM_SCRIPT_SCRIPT_ERROR_H
 
 typedef enum ScriptError_t
 {
@@ -72,4 +72,4 @@ typedef enum ScriptError_t
 
 const char* ScriptErrorString(const ScriptError error);
 
-#endif // RAVEN_SCRIPT_SCRIPT_ERROR_H
+#endif // RAPTOREUM_SCRIPT_SCRIPT_ERROR_H

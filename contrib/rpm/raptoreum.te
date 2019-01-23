@@ -1,0 +1,81 @@
+policy_module(raptoreum, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type raptoreum_t;
+type raptoreum_exec_t;
+init_daemon_domain(raptoreum_t, raptoreum_exec_t)
+
+permissive raptoreum_t;
+
+type raptoreum_initrc_exec_t;
+init_script_file(raptoreum_initrc_exec_t)
+
+type raptoreum_conf_t;
+files_type(raptoreum_conf_t)
+
+type raptoreum_var_lib_t;
+files_type(raptoreum_var_lib_t)
+
+type raptoreum_var_run_t;
+files_type(raptoreum_var_run_t)
+
+type raptoreum_port_t;
+corenet_port(raptoreum_port_t)
+
+########################################
+#
+# raptoreum local policy
+#
+allow raptoreum_t self:process { fork };
+
+allow raptoreum_t self:fifo_file rw_fifo_file_perms;
+allow raptoreum_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(raptoreum_t, raptoreum_conf_t, raptoreum_conf_t)
+manage_files_pattern(raptoreum_t, raptoreum_conf_t, raptoreum_conf_t)
+
+manage_dirs_pattern(raptoreum_t, raptoreum_var_lib_t, raptoreum_var_lib_t)
+manage_files_pattern(raptoreum_t, raptoreum_var_lib_t, raptoreum_var_lib_t)
+files_var_lib_filetrans(raptoreum_t, raptoreum_var_lib_t, { dir file })
+
+manage_dirs_pattern(raptoreum_t, raptoreum_var_run_t, raptoreum_var_run_t)
+manage_files_pattern(raptoreum_t, raptoreum_var_run_t, raptoreum_var_run_t)
+
+sysnet_dns_name_resolve(raptoreum_t)
+corenet_all_recvfrom_unlabeled(raptoreum_t)
+
+allow raptoreum_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(raptoreum_t)
+corenet_tcp_sendrecv_generic_node(raptoreum_t)
+corenet_tcp_sendrecv_all_ports(raptoreum_t)
+corenet_tcp_bind_generic_node(raptoreum_t)
+
+gen_require(`
+    type raptoreum_port_t;
+')
+allow raptoreum_t raptoreum_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type raptoreum_port_t;
+')
+allow raptoreum_t raptoreum_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(raptoreum_t)
+
+files_read_etc_files(raptoreum_t)
+
+miscfiles_read_localization(raptoreum_t)
+
+sysnet_dns_name_resolve(raptoreum_t)
+
+allow raptoreum_t raptoreum_exec_t:file execute_no_trans;
+allow raptoreum_t self:process setsched;
+corecmd_exec_ls(raptoreum_t)
+corenet_tcp_connect_http_port(raptoreum_t)
+dev_read_urand(raptoreum_t)
+fs_getattr_xattr_fs(raptoreum_t)
+kernel_read_system_state(raptoreum_t)

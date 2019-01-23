@@ -1,10 +1,10 @@
 // Copyright (c) 2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_THREADINTERRUPT_H
-#define RAVEN_THREADINTERRUPT_H
+#ifndef RAPTOREUM_THREADINTERRUPT_H
+#define RAPTOREUM_THREADINTERRUPT_H
 
 #include <atomic>
 #include <chrono>
@@ -32,4 +32,4 @@ private:
     std::atomic<bool> flag;
 };
 
-#endif //RAVEN_THREADINTERRUPT_H
+#endif //RAPTOREUM_THREADINTERRUPT_H

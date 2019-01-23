@@ -1,0 +1,33 @@
+# /etc/conf.d/raptoreumd: config file for /etc/init.d/raptoreumd
+
+# Config file location
+#RAPTOREUMD_CONFIGFILE="/etc/raptoreum/raptoreum.conf"
+
+# What directory to write pidfile to?  (created and owned by $RAPTOREUMD_USER)
+#RAPTOREUMD_PIDDIR="/var/run/raptoreumd"
+
+# What filename to give the pidfile
+#RAPTOREUMD_PIDFILE="${RAPTOREUMD_PIDDIR}/raptoreumd.pid"
+
+# Where to write raptoreumd data (be mindful that the blockchain is large)
+#RAPTOREUMD_DATADIR="/var/lib/raptoreumd"
+
+# User and group to own raptoreumd process
+#RAPTOREUMD_USER="raptoreum"
+#RAPTOREUMD_GROUP="raptoreum"
+
+# Path to raptoreumd executable
+#RAPTOREUMD_BIN="/usr/bin/raptoreumd"
+
+# Nice value to run raptoreumd under
+#RAPTOREUMD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#RAPTOREUMD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for raptoreumd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+RAPTOREUMD_SIGTERM_TIMEOUT=60

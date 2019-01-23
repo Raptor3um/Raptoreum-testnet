@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_CONSENSUS_CONSENSUS_H
-#define RAVEN_CONSENSUS_CONSENSUS_H
+#ifndef RAPTOREUM_CONSENSUS_CONSENSUS_H
+#define RAPTOREUM_CONSENSUS_CONSENSUS_H
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -31,11 +31,6 @@ static const int WITNESS_SCALE_FACTOR = 4;
 static const size_t MIN_TRANSACTION_WEIGHT = WITNESS_SCALE_FACTOR * 60; // 60 is the lower bound for the size of a valid serialized CTransaction
 static const size_t MIN_SERIALIZABLE_TRANSACTION_WEIGHT = WITNESS_SCALE_FACTOR * 10; // 10 is the lower bound for the size of a serialized CTransaction
 
-#define UNUSED_VAR     __attribute__ ((unused))
-//! This variable needs to in this class because undo.h uses it. However because it is in this class
-//! it causes unused variable warnings when compiling. This UNUSED_VAR removes the unused warnings
-UNUSED_VAR static bool fAssetsIsActive = false;
-
 unsigned int GetMaxBlockWeight();
 unsigned int GetMaxBlockSerializedSize();
 
@@ -48,4 +43,4 @@ enum {
     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),
 };
 
-#endif // RAVEN_CONSENSUS_CONSENSUS_H
+#endif // RAPTOREUM_CONSENSUS_CONSENSUS_H

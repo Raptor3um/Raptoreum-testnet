@@ -1,10 +1,10 @@
 // Copyright (c) 2014-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_TIMEDATA_H
-#define RAVEN_TIMEDATA_H
+#ifndef RAPTOREUM_TIMEDATA_H
+#define RAPTOREUM_TIMEDATA_H
 
 #include <algorithm>
 #include <assert.h>
@@ -76,4 +76,4 @@ int64_t GetTimeOffset();
 int64_t GetAdjustedTime();
 void AddTimeData(const CNetAddr& ip, int64_t nTime);
 
-#endif // RAVEN_TIMEDATA_H
+#endif // RAPTOREUM_TIMEDATA_H

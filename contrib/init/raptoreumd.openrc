@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/raptoreum/.raptoreum" ]; then
+	RAPTOREUMD_DEFAULT_DATADIR="/var/lib/raptoreum/.raptoreum"
+else
+	RAPTOREUMD_DEFAULT_DATADIR="/var/lib/raptoreumd"
+fi
+
+RAPTOREUMD_CONFIGFILE=${RAPTOREUMD_CONFIGFILE:-/etc/raptoreum/raptoreum.conf}
+RAPTOREUMD_PIDDIR=${RAPTOREUMD_PIDDIR:-/var/run/raptoreumd}
+RAPTOREUMD_PIDFILE=${RAPTOREUMD_PIDFILE:-${RAPTOREUMD_PIDDIR}/raptoreumd.pid}
+RAPTOREUMD_DATADIR=${RAPTOREUMD_DATADIR:-${RAPTOREUMD_DEFAULT_DATADIR}}
+RAPTOREUMD_USER=${RAPTOREUMD_USER:-${RAPTOREUM_USER:-raptoreum}}
+RAPTOREUMD_GROUP=${RAPTOREUMD_GROUP:-raptoreum}
+RAPTOREUMD_BIN=${RAPTOREUMD_BIN:-/usr/bin/raptoreumd}
+RAPTOREUMD_NICE=${RAPTOREUMD_NICE:-${NICELEVEL:-0}}
+RAPTOREUMD_OPTS="${RAPTOREUMD_OPTS:-${RAPTOREUM_OPTS}}"
+
+name="Raptoreum Core Daemon"
+description="Raptoreum cryptocurrency P2P network daemon"
+
+command="/usr/bin/raptoreumd"
+command_args="-pid=\"${RAPTOREUMD_PIDFILE}\" \
+		-conf=\"${RAPTOREUMD_CONFIGFILE}\" \
+		-datadir=\"${RAPTOREUMD_DATADIR}\" \
+		-daemon \
+		${RAPTOREUMD_OPTS}"
+
+required_files="${RAPTOREUMD_CONFIGFILE}"
+start_stop_daemon_args="-u ${RAPTOREUMD_USER} \
+			-N ${RAPTOREUMD_NICE} -w 2000"
+pidfile="${RAPTOREUMD_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${RAPTOREUMD_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${RAPTOREUMD_USER}:${RAPTOREUMD_GROUP}" \
+	"${RAPTOREUMD_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${RAPTOREUMD_USER}:${RAPTOREUMD_GROUP}" \
+	"${RAPTOREUMD_PIDDIR}"
+
+	checkpath -f \
+	-o ${RAPTOREUMD_USER}:${RAPTOREUMD_GROUP} \
+	-m 0660 \
+	${RAPTOREUMD_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${RAPTOREUMD_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run raptoreumd."
+		eerror "The setting must appear in ${RAPTOREUMD_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Raptoreum Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

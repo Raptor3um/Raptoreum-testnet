@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Raven Core developers
+// Copyright (c) 2017 The Raptoreum Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_QT_ADDRESSTABLEMODEL_H
-#define RAVEN_QT_ADDRESSTABLEMODEL_H
+#ifndef RAPTOREUM_QT_ADDRESSTABLEMODEL_H
+#define RAPTOREUM_QT_ADDRESSTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -27,7 +27,7 @@ public:
 
     enum ColumnIndex {
         Label = 0,   /**< User specified label */
-        Address = 1  /**< Raven address */
+        Address = 1  /**< Raptoreum address */
     };
 
     enum RoleIndex {
@@ -93,4 +93,4 @@ public Q_SLOTS:
     friend class AddressTablePriv;
 };
 
-#endif // RAVEN_QT_ADDRESSTABLEMODEL_H
+#endif // RAPTOREUM_QT_ADDRESSTABLEMODEL_H
