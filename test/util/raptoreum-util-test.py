@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # Copyright 2014 BitPay Inc.
 # Copyright 2016-2017 The Bitcoin Core developers
-# Copyright (c) 2017 The Raptoreum Core developers
+# Copyright (c) 2017 The Raven Core developers
+# Copyright (c) 2019 The Raptoreum Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test framework for raptoreum utils.

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016-2017 Raptoreum Core Developers
+# Copyright (c) 2016-2017 Raven Core Developers
+# Copyright (c) 2019 The Raptoreum Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
