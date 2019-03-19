@@ -60,15 +60,3 @@ code. This is especially important for large or high-risk changes. It is useful
 to add a test plan to the pull request description if testing the changes is
 not straightforward.
 
-
-About Raptoreumcoin
-----------------
-A digital peer to peer network for the facilitation of asset transfer.
-
-
-
-In the fictional world of Westeros, raptoreums are used as messengers who carry statements of truth. Raptoreumcoin is a use case specific blockchain designed to carry statements of truth about who owns what assets. 
-
-
-
-Thank you to the Bitcoin developers. 
