@@ -1,12 +1,12 @@
 Raptoreum Core integration/staging tree
 =====================================
 
-https://raptoreumcoin.org
+https://raptoreum.com
 
-What is Raptoreumcoin?
+What is Raptoreum?
 ----------------
 
-Raptoreumcoin is an experimental digital currency that enables instant payments to
+Raptoreum is an experimental digital currency that enables instant payments to
 anyone, anywhere in the world. Raptoreumcoin uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
 out collectively by the network. 
